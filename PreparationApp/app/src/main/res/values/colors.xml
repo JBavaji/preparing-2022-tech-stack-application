@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#999999</color>
+    <color name="purple_200">#F2FBF5F5</color>
     <color name="purple_500">#5C5C5C</color>
     <color name="purple_700">#1D1D1D</color>
     <color name="teal_200">#0091FF</color>
@@ -17,4 +17,7 @@
     <color name="colorOnSecondary">@color/black</color>
 
     <color name="background">@color/colorPrimaryVariant</color>
+    <color name="input_background">#2E2E2E</color>
+    <color name="input_text_color">@color/purple_200</color>
+    <color name="input_error">#F14336</color>
 </resources>

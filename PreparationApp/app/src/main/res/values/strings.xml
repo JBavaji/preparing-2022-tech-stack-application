@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">2022 Preparation App</string>
     <string name="let_s_do_some_engineering">Let\'s do some engineering</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="forgot_password_subtitle_text">Enter your registered email address and we\'ll send you a link for reset the password</string>
+    <string name="hint_enter_your_email">Enter your email</string>
+    <string name="label_email_address">Email Address</string>
+    <string name="button_label_continue">Continue</string>
 </resources>
