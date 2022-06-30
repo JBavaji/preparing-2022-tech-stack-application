@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="header_text_size">48sp</dimen>
+    <dimen name="app_logo_size">300dp</dimen>
+</resources>

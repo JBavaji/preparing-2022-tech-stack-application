@@ -6,9 +6,11 @@
         <entry key="app/src/main/res/drawable/ic_app_icon.xml" value="0.2335" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/font-en-rUS/font.xml" value="0.1" />
         <entry key="app/src/main/res/font/adamina.xml" value="0.25729166666666664" />
+        <entry key="app/src/main/res/font/font.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21302083333333333" />
-        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.165" />
       </map>
     </option>
   </component>
