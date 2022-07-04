@@ -9,17 +9,16 @@ import com.jbavaji.preparationapp.R
 
 class ForgotPasswordViewModel : ViewModel() {
 
-    private val _userInputState = MutableLiveData<UserInputState>()
+    private val _userInputState = MutableLiveData<ForgotPasswordInputState>()
 
-    val userInputState: LiveData<UserInputState>
+    val userInputState: LiveData<ForgotPasswordInputState>
         get() = _userInputState
 
     fun validateUserInput(input: String) {
-        Log.d("Forgot", "$input is ${isUserEmailNotValid(input)}")
         if (isUserEmailNotValid(input)) {
-            _userInputState.value = UserInputState(error = R.string.invalid_email)
+            _userInputState.value = ForgotPasswordInputState(error = R.string.invalid_email)
         } else {
-            _userInputState.value = UserInputState(isValid = true)
+            _userInputState.value = ForgotPasswordInputState(isValid = true)
         }
     }
 

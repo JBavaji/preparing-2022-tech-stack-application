@@ -16,8 +16,16 @@
     <color name="colorSecondaryVariant">@color/teal_700</color>
     <color name="colorOnSecondary">@color/black</color>
 
+    <color name="google_button_normal">#F14336</color>
+    <color name="google_button_pressed">#E91F10</color>
+
+    <color name="facebook_button_normal">#3A559F</color>
+    <color name="facebook_button_pressed">#2E437D</color>
+
     <color name="background">@color/colorPrimaryVariant</color>
     <color name="input_background">#2E2E2E</color>
     <color name="input_text_color">@color/purple_200</color>
     <color name="input_error">#F14336</color>
+
+    <color name="spannable_text_color">@color/colorSecondary</color>
 </resources>

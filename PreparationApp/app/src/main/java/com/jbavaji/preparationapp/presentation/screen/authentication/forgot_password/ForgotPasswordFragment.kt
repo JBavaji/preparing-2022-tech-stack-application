@@ -83,13 +83,6 @@ class ForgotPasswordFragment : Fragment() {
         // disable login button unless both username / password is valid
         content.continueButton.isClickable = isValid
         content.continueButton.isEnabled = isValid
-
-        content.continueButton.background =
-            resources.getDrawable(
-                if (isValid) R.drawable.button_enable_rounded_corner_background
-                else R.drawable.button_disable_rounded_corner_background,
-                null
-            )
     }
 
     override fun onDestroyView() {

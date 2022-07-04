@@ -7,4 +7,17 @@
     <string name="label_email_address">Email Address</string>
     <string name="button_label_continue">Continue</string>
     <string name="invalid_email">Invalid email</string>
+    <string name="create_your_account_to_start_your_free_trial">Create your account to start your free trial</string>
+    <string name="password">Password</string>
+    <string name="password_6_character">Password (6+ Character)</string>
+    <string name="label_terms_of_services_amp_privacy_policy">By signing up I agree to application Terms of Services &amp; Privacy Policy></string>
+    <string name="terms_of_services_span">Terms of Services</string>
+    <string name="button_sign_up_label">Sign Up</string>
+    <string name="or_sign_up_with_label">Or Sign up with</string>
+    <string name="google">Google</string>
+    <string name="already_have_account_sign_in">Already have account? Sign In</string>
+    <string name="sign_in_span">Sign In</string>
+    <string name="facebook">Facebook</string>
+    <string name="invalid_pasword">Password should be at least 6 character long</string>
+
 </resources>
