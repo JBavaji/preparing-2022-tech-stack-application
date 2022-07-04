@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/button_disable_rounded_corner_background.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/button_rounded_corner_background.xml" value="0.138" />
         <entry key="app/src/main/res/drawable/error_input_text_rounded_corner_background.xml" value="0.2205" />
         <entry key="app/src/main/res/drawable/ic_app_icon.xml" value="0.2335" />

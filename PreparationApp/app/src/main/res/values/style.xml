@@ -77,13 +77,15 @@
     </style>
 
     <style name="InputText.TextAppearance.Normal" parent="InputText.TextAppearance.Thin">
-        <item name="android:textColor">@color/input_text_color</item>
-        <item name="hintTextColor">@color/input_text_color</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
     </style>
 
     <style name="InputText.TextAppearance.Error" parent="InputText.TextAppearance.Thin">
         <item name="android:textColor">@color/input_error</item>
         <item name="hintTextColor">@color/input_error</item>
+        <item name="android:textColorHint">@color/input_error</item>
     </style>
 
     <!-- button style -->
