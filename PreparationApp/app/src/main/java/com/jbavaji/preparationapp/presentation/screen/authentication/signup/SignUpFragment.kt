@@ -2,6 +2,7 @@ package com.jbavaji.preparationapp.presentation.screen.authentication.signup
 
 import android.os.Bundle
 import android.text.SpannableString
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.jbavaji.preparationapp.R
 import com.jbavaji.preparationapp.databinding.FragmentSignUpBinding
+import com.jbavaji.preparationapp.utils.OpenURI
 import com.jbavaji.preparationapp.utils.SetStringAsSpannable
 import com.jbavaji.preparationapp.utils.afterTextChanged
 
@@ -48,16 +50,22 @@ class SignUpFragment : Fragment() {
         ).SetStringAsSpannable(
             stringSpan = resources.getString(R.string.terms_of_services_span),
             colorSpan = resources.getColor(R.color.spannable_text_color, null)
-        )
+        ) {
+            activity?.OpenURI("https://generator.lorem-ipsum.info/terms-and-conditions")
+        }
         content.agreeTermsConditionsLabelText.text = termsConditionSpannable
+        content.agreeTermsConditionsLabelText.movementMethod = LinkMovementMethod.getInstance()
 
         val alreadySignInSpannable = SpannableString(
             resources.getString(R.string.already_have_account_sign_in)
         ).SetStringAsSpannable(
             stringSpan = resources.getString(R.string.sign_in_span),
             colorSpan = resources.getColor(R.color.spannable_text_color, null)
-        )
+        ){
+            Toast.makeText(context, "Sign In click", Toast.LENGTH_SHORT).show()
+        }
         content.alreadyHaveAccountLabelText.text = alreadySignInSpannable
+        content.alreadyHaveAccountLabelText.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun initObserver() {
