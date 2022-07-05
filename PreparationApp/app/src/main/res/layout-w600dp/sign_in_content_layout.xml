@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="false"
     android:layout_gravity="center"
     android:maxWidth="500dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".presentation.screen.authentication.signup.SignUpFragment">
-
-    <TextView
-        android:id="@+id/title_text_view"
-        style="@style/Header.TextAppearance.Bold.White"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/create_your_account_to_start_your_free_trial"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".presentation.screen.authentication.signin.SignInFragment">
 
     <TextView
         android:id="@+id/input_email_label_text"
         style="@style/InputLabel.TextAppearance.Normal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="@string/label_email_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/input_email_edit_text"
@@ -72,39 +63,43 @@
         app:layout_constraintTop_toBottomOf="@+id/input_password_label_text" />
 
     <TextView
-        android:id="@+id/agree_terms_conditions_label_text"
+        android:id="@+id/forgot_password_label_text"
         style="@style/InputLabel.TextAppearance.Normal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/label_terms_of_services_amp_privacy_policy"
+        android:layout_marginTop="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/forgot_password_que"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password_edit_text" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sign_up_button"
+        android:id="@+id/sign_in_button"
         style="@style/ButtonLabel.TextAppearance.Normal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@drawable/primary_button_background_selector"
         android:padding="10dp"
-        android:text="@string/button_sign_up_label"
+        android:text="@string/button_sign_in_label"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agree_terms_conditions_label_text" />
+        app:layout_constraintTop_toBottomOf="@+id/forgot_password_label_text" />
 
     <TextView
-        android:id="@+id/or_sign_up_text"
+        android:id="@+id/or_sign_in_with_text"
         style="@style/InputLabel.TextAppearance.Normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="@string/or_sign_up_with_label"
+        android:text="@string/or_sign_in_with_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_button" />
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/google_button_layout"
@@ -119,7 +114,7 @@
         app:layout_constraintEnd_toStartOf="@+id/facebook_button_layout"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/or_sign_up_text">
+        app:layout_constraintTop_toBottomOf="@+id/or_sign_in_with_text">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -150,7 +145,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/google_button_layout"
-        app:layout_constraintTop_toBottomOf="@+id/or_sign_up_text" >
+        app:layout_constraintTop_toBottomOf="@+id/or_sign_in_with_text" >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -185,12 +180,12 @@
 
 
     <TextView
-        android:id="@+id/already_have_account_label_text"
+        android:id="@+id/do_not_have_account_label_text"
         style="@style/InputLabel.TextAppearance.Normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="@string/already_have_account_sign_in"
+        android:layout_marginTop="45dp"
+        android:text="@string/do_not_have_account_sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"

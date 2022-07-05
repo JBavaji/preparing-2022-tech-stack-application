@@ -19,5 +19,9 @@
     <string name="sign_in_span">Sign In</string>
     <string name="facebook">Facebook</string>
     <string name="invalid_pasword">Password should be at least 6 character long</string>
-
+    <string name="forgot_password_que">Forgot Password?</string>
+    <string name="button_sign_in_label">Sign In</string>
+    <string name="or_sign_in_with_label">Or sign in with</string>
+    <string name="do_not_have_account_sign_up">Don\'t have a account? Sign Up</string>
+    <string name="sign_up_span">Sign Up</string>
 </resources>
