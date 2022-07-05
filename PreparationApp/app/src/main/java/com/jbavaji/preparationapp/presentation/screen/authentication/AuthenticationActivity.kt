@@ -42,6 +42,8 @@ class AuthenticationActivity : AppCompatActivity() {
                         navController.navigate(R.id.action_signInFragment_to_signUpFragment)
                     R.id.forgotPasswordFragment ->
                         navController.navigate(R.id.action_forgotPasswordFragment_to_signInFragment)
+                    R.id.passwordSentFragment ->
+                        navController.navigate(R.id.action_passwordSentFragment_to_signInFragment)
                     R.id.signUpFragment ->
                         finish()
                 }

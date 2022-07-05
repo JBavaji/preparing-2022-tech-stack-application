@@ -24,4 +24,6 @@
     <string name="or_sign_in_with_label">Or sign in with</string>
     <string name="do_not_have_account_sign_up">Don\'t have a account? Sign Up</string>
     <string name="sign_up_span">Sign Up</string>
+    <string name="reset_your_password_que">Reset your password?</string>
+    <string name="password_sent_message">Check in Your Mail !\nReset password link has been sent to your email-id. Please check your mail inbox</string>
 </resources>
