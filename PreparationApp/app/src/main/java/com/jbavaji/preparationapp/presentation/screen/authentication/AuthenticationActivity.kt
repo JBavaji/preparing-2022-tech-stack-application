@@ -1,14 +1,9 @@
 package com.jbavaji.preparationapp.presentation.screen.authentication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import com.jbavaji.preparationapp.R
 import com.jbavaji.preparationapp.databinding.ActivityAuthenticationBinding
 
@@ -31,9 +26,12 @@ class AuthenticationActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         binding.toolbar.apply {
-            title = "Sign In from Activity"
+            title = ""
             setNavigationOnClickListener {
-                Toast.makeText(context, "Back pressed", Toast.LENGTH_SHORT).show()
+                when (navController.currentDestination?.id) {
+                    R.id.signInFragment ->
+                        navController.navigate(R.id.action_signInFragment_to_signUpFragment)
+                }
             }
         }
     }
