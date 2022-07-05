@@ -77,7 +77,7 @@ class ForgotPasswordFragment : Fragment() {
         content.continueButton.setOnClickListener {
             Navigation
                 .findNavController(it)
-                .navigate(R.id.action_forgotPasswordFragment_to_resetPasswordFragment)
+                .navigate(R.id.action_forgotPasswordFragment_to_passwordSentFragment)
         }
     }
 
