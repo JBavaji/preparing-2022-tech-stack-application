@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.jbavaji.preparationapp.R
 import com.jbavaji.preparationapp.databinding.FragmentSignUpBinding
 import com.jbavaji.preparationapp.utils.OpenURI
@@ -61,8 +62,9 @@ class SignUpFragment : Fragment() {
         ).SetStringAsSpannable(
             stringSpan = resources.getString(R.string.sign_in_span),
             colorSpan = resources.getColor(R.color.spannable_text_color, null)
-        ){
-            Toast.makeText(context, "Sign In click", Toast.LENGTH_SHORT).show()
+        ) {
+            Navigation.findNavController(requireActivity(), content.alreadyHaveAccountLabelText.id)
+                .navigate(R.id.action_signUpFragment_to_signInFragment)
         }
         content.alreadyHaveAccountLabelText.text = alreadySignInSpannable
         content.alreadyHaveAccountLabelText.movementMethod = LinkMovementMethod.getInstance()
@@ -134,5 +136,4 @@ class SignUpFragment : Fragment() {
         content.signUpButton.isClickable = isValid
         content.signUpButton.isEnabled = isValid
     }
-
 }
