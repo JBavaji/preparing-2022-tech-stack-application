@@ -8,11 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.jbavaji.preparationapp.R
 import com.jbavaji.preparationapp.databinding.FragmentSignInBinding
+import com.jbavaji.preparationapp.presentation.screen.authentication.signup.UserInputType
 import com.jbavaji.preparationapp.utils.SetStringAsSpannable
+import com.jbavaji.preparationapp.utils.afterTextChanged
 
 class SignInFragment : Fragment() {
 
@@ -39,7 +43,68 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
-        //initObserver()
+        initObserver()
+    }
+
+    private fun initObserver() {
+        viewModel.userInputState.observe(viewLifecycleOwner, Observer {
+            val inputState = it ?: return@Observer
+
+            if (inputState.emailError != null) {
+                content.inputEmailEditText.apply {
+                    background =
+                        resources.getDrawable(
+                            R.drawable.error_input_text_rounded_corner_background, null
+                        )
+                    setTextColor(resources.getColor(R.color.input_error, null))
+                    setHintTextColor(resources.getColor(R.color.input_error, null))
+                }
+            } else {
+                content.inputEmailEditText.apply {
+                    background =
+                        resources.getDrawable(
+                            R.drawable.normal_input_text_rounded_corner_background, null
+                        )
+                    setTextColor(resources.getColor(R.color.white, null))
+                    setHintTextColor(resources.getColor(R.color.white, null))
+                }
+            }
+
+            if (inputState.passwordError != null) {
+                content.inputPasswordEditText.apply {
+                    background =
+                        resources.getDrawable(
+                            R.drawable.error_input_text_rounded_corner_background, null
+                        )
+                    setTextColor(resources.getColor(R.color.input_error, null))
+                    setHintTextColor(resources.getColor(R.color.input_error, null))
+                }
+            } else {
+                content.inputPasswordEditText.apply {
+                    background =
+                        resources.getDrawable(
+                            R.drawable.normal_input_text_rounded_corner_background, null
+                        )
+                    setTextColor(resources.getColor(R.color.white, null))
+                    setHintTextColor(resources.getColor(R.color.white, null))
+                }
+            }
+
+            disableSignUp(inputState.isValid)
+        })
+
+        content.inputEmailEditText.afterTextChanged {
+            viewModel.validateUserInput(it, UserInputType.EMAIL)
+        }
+        content.inputPasswordEditText.afterTextChanged {
+            viewModel.validateUserInput(it, UserInputType.PASSWORD)
+        }
+
+        disableSignUp(isValid = false)
+
+        content.signInButton.setOnClickListener {
+            Toast.makeText(context, "signInButton", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initUI() {
@@ -59,6 +124,12 @@ class SignInFragment : Fragment() {
         }
         content.doNotHaveAccountLabelText.text = alreadySignInSpannable
         content.doNotHaveAccountLabelText.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    private fun disableSignUp(isValid: Boolean) {
+        // disable login button unless both username / password is valid
+        content.signInButton.isClickable = isValid
+        content.signInButton.isEnabled = isValid
     }
 
     override fun onDestroyView() {
