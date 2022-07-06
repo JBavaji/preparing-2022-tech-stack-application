@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.jbavaji.preparationapp.databinding.ActivitySplashScreenBinding
 import com.jbavaji.preparationapp.presentation.screen.MainActivity
+import com.jbavaji.preparationapp.presentation.screen.authentication.AuthenticationActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class SplashScreenActivity : AppCompatActivity() {
     private fun initObserver() {
         viewModel.splashLifeCycle.observe(this, Observer {
             if(it) {
-                Intent(this, MainActivity::class.java).apply {
+                Intent(this, AuthenticationActivity::class.java).apply {
                     finish()
                     startActivity(this)
                 }
