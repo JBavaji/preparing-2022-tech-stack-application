@@ -4,4 +4,5 @@ import com.jbavaji.core.data.User
 
 class UserRoomRepository(private val dataSource: UserRoomDataResource) {
     suspend fun addUser(user: User) = dataSource.add(user)
+    suspend fun fetchAllUsers() = dataSource.fetchAllUsers()
 }

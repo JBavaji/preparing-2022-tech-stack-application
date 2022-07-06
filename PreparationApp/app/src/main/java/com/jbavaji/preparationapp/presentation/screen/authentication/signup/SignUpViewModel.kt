@@ -1,10 +1,15 @@
 package com.jbavaji.preparationapp.presentation.screen.authentication.signup
 
+import android.util.Log
 import android.util.Patterns
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.jbavaji.core.data.User
 import com.jbavaji.core.repository.UserRoomRepository
 import com.jbavaji.core.usecase.AddUser
+import com.jbavaji.core.usecase.AllUsers
 import com.jbavaji.preparationapp.R
 import com.jbavaji.preparationapp.framework.UserUseCases
 import kotlinx.coroutines.CoroutineScope
@@ -14,8 +19,9 @@ import kotlinx.coroutines.launch
 class SignUpViewModel(repository: UserRoomRepository) : ViewModel() {
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
 
-    val useCases: UserUseCases = UserUseCases(
-        AddUser(repository)
+    private val useCases: UserUseCases = UserUseCases(
+        AddUser(repository),
+        AllUsers(repository)
     )
 
     private val PASSWORD_MIN_LENGTH = 6
@@ -32,6 +38,9 @@ class SignUpViewModel(repository: UserRoomRepository) : ViewModel() {
         coroutineScope.launch {
             val signUpUserId = useCases.addUser(currentUser)
             _userSaved.postValue(signUpUserId != 0L)
+
+            val users = useCases.fetchAllUsers()
+            Log.d("fetchAllUsers", "users $users")
         }
     }
 
@@ -84,7 +93,8 @@ class SignUpViewModel(repository: UserRoomRepository) : ViewModel() {
         } else true
     }
 
-    class SignUpViewModelFactory(private val repository: UserRoomRepository) : ViewModelProvider.Factory {
+    class SignUpViewModelFactory(private val repository: UserRoomRepository) :
+        ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
