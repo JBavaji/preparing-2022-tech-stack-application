@@ -11,8 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import com.jbavaji.core.data.User
+import com.jbavaji.core.repository.UserRoomRepository
+import com.jbavaji.preparationapp.PreparationApplication
 import com.jbavaji.preparationapp.R
 import com.jbavaji.preparationapp.databinding.FragmentSignUpBinding
+import com.jbavaji.preparationapp.framework.UserRoomDataSource
 import com.jbavaji.preparationapp.utils.OpenURI
 import com.jbavaji.preparationapp.utils.SetStringAsSpannable
 import com.jbavaji.preparationapp.utils.afterTextChanged
@@ -23,7 +27,18 @@ class SignUpFragment : Fragment() {
         fun newInstance() = SignUpFragment()
     }
 
-    private val viewModel: SignUpViewModel by viewModels()
+    private val viewModel: SignUpViewModel by viewModels {
+        val repository = UserRoomRepository(
+            UserRoomDataSource(
+                (activity?.application as PreparationApplication)
+            )
+        )
+
+        SignUpViewModel.SignUpViewModelFactory(repository)
+    }
+
+    private var currentUser = User("", "", 0L, 0L)
+
     private lateinit var _binding: FragmentSignUpBinding
     private val binding
         get() = _binding
@@ -40,7 +55,6 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initUI()
         initObserver()
     }
@@ -126,8 +140,24 @@ class SignUpFragment : Fragment() {
 
         disableSignUp(isValid = false)
 
+        viewModel.userSaved.observe(viewLifecycleOwner) { saved ->
+            if (saved) {
+                Toast.makeText(context, "User Saved Successfully", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "User Not Saved", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         content.signUpButton.setOnClickListener {
-            Toast.makeText(context, "signUpButton", Toast.LENGTH_SHORT).show()
+            val time: Long = System.currentTimeMillis()
+            currentUser.email = content.inputEmailEditText.text.toString()
+            currentUser.password = content.inputPasswordEditText.text.toString()
+            currentUser.updateTime = time
+            if (currentUser.id == 0L) {
+                currentUser.creationTime = time
+            }
+
+            viewModel.signUpUser(currentUser)
         }
     }
 

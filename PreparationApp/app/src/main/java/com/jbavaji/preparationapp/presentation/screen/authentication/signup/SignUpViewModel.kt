@@ -1,17 +1,39 @@
 package com.jbavaji.preparationapp.presentation.screen.authentication.signup
 
 import android.util.Patterns
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.jbavaji.core.data.User
+import com.jbavaji.core.repository.UserRoomRepository
+import com.jbavaji.core.usecase.AddUser
 import com.jbavaji.preparationapp.R
+import com.jbavaji.preparationapp.framework.UserUseCases
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel(repository: UserRoomRepository) : ViewModel() {
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+
+    val useCases: UserUseCases = UserUseCases(
+        AddUser(repository)
+    )
+
     private val PASSWORD_MIN_LENGTH = 6
 
     private val _inputState = MutableLiveData<SignUpInputState>()
     val userInputState: LiveData<SignUpInputState>
         get() = _inputState
+
+    private val _userSaved = MutableLiveData<Boolean>()
+    val userSaved: LiveData<Boolean>
+        get() = _userSaved
+
+    fun signUpUser(currentUser: User) {
+        coroutineScope.launch {
+            val signUpUserId = useCases.addUser(currentUser)
+            _userSaved.postValue(signUpUserId != 0L)
+        }
+    }
 
     fun validateUserInput(input: String, validate: UserInputType) {
         if (validate == UserInputType.EMAIL) {
@@ -62,4 +84,14 @@ class SignUpViewModel : ViewModel() {
         } else true
     }
 
+    class SignUpViewModelFactory(private val repository: UserRoomRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return SignUpViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+
+    }
 }
