@@ -75,9 +75,12 @@ class ForgotPasswordFragment : Fragment() {
         disableContinue(isValid = false)
 
         content.continueButton.setOnClickListener {
+            val email = content.inputEmailEditText.text.toString()
+            val action = ForgotPasswordFragmentDirections
+                .actionForgotPasswordFragmentToPasswordSentFragment(email)
             Navigation
                 .findNavController(it)
-                .navigate(R.id.action_forgotPasswordFragment_to_passwordSentFragment)
+                .navigate(action)
         }
     }
 
