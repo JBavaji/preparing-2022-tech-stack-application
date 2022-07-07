@@ -18,9 +18,9 @@ class ForgotPasswordFragment : Fragment() {
         fun newInstance() = ForgotPasswordFragment()
     }
 
-    private lateinit var _binding: FragmentForgotPasswordBinding
+    private var _binding: FragmentForgotPasswordBinding? = null
     private val binding
-        get() = _binding
+        get() = _binding!!
 
     private val content
         get() = binding.content
@@ -92,5 +92,6 @@ class ForgotPasswordFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding = null
     }
 }

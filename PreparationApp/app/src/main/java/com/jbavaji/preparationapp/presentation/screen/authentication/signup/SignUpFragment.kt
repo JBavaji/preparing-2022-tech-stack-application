@@ -39,9 +39,9 @@ class SignUpFragment : Fragment() {
 
     private var currentUser = User("", "", 0L, 0L)
 
-    private lateinit var _binding: FragmentSignUpBinding
+    private var _binding: FragmentSignUpBinding? = null
     private val binding
-        get() = _binding
+        get() = _binding!!
     private val content
         get() = binding.content
 
@@ -167,5 +167,10 @@ class SignUpFragment : Fragment() {
         // disable login button unless both username / password is valid
         content.signUpButton.isClickable = isValid
         content.signUpButton.isEnabled = isValid
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

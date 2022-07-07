@@ -24,9 +24,9 @@ class SignInFragment : Fragment() {
         fun newInstance() = SignInFragment()
     }
 
-    private lateinit var _binding: FragmentSignInBinding
+    private var _binding: FragmentSignInBinding? = null
     private val binding
-        get() = _binding
+        get() = _binding!!
     private val content
         get() = binding.content
 
@@ -134,6 +134,7 @@ class SignInFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding
     }
 
 }

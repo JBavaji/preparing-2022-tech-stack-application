@@ -18,9 +18,9 @@ class PasswordSentFragment : Fragment() {
 
     private val viewModel: PasswordSentViewModel by viewModels()
 
-    private lateinit var _binding: FragmentPasswordSentBinding
+    private var _binding: FragmentPasswordSentBinding? = null
     private val binding
-        get() = _binding
+        get() = _binding!!
     private val content
         get() = binding.content
 
@@ -43,5 +43,10 @@ class PasswordSentFragment : Fragment() {
         content.deeplinkUrlView.setOnClickListener {
             requireActivity().OpenURI(deepLinkUrl)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
