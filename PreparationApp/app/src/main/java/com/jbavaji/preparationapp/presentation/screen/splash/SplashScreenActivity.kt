@@ -8,12 +8,14 @@ import androidx.lifecycle.Observer
 import com.jbavaji.preparationapp.databinding.ActivitySplashScreenBinding
 import com.jbavaji.preparationapp.presentation.screen.MainActivity
 import com.jbavaji.preparationapp.presentation.screen.authentication.AuthenticationActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
 
-    private lateinit var _binding: ActivitySplashScreenBinding
+    private var _binding: ActivitySplashScreenBinding? = null
     private val binding
-        get() = _binding
+        get() = _binding!!
 
     private val viewModel: SplashScreenViewModel by viewModels()
 
@@ -36,5 +38,10 @@ class SplashScreenActivity : AppCompatActivity() {
         })
 
         viewModel.loadingApp()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
