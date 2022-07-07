@@ -37,10 +37,9 @@ class SignUpViewModel(repository: UserRoomRepository) : ViewModel() {
     fun signUpUser(currentUser: User) {
         coroutineScope.launch {
             val signUpUserId = useCases.addUser(currentUser)
-            _userSaved.postValue(signUpUserId != 0L)
-
             val users = useCases.fetchAllUsers()
             Log.d("fetchAllUsers", "users $users")
+            _userSaved.postValue(signUpUserId != 0L)
         }
     }
 

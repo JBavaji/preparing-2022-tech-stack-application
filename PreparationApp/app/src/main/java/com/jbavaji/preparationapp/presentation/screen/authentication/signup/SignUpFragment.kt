@@ -143,6 +143,8 @@ class SignUpFragment : Fragment() {
         viewModel.userSaved.observe(viewLifecycleOwner) { saved ->
             if (saved) {
                 Toast.makeText(context, "User Saved Successfully", Toast.LENGTH_SHORT).show()
+                Navigation.findNavController(requireActivity(), content.alreadyHaveAccountLabelText.id)
+                    .popBackStack()
             } else {
                 Toast.makeText(context, "User Not Saved", Toast.LENGTH_SHORT).show()
             }
